@@ -1,1 +1,1 @@
-{"name":"kaytox-dashboard","version":"1.0.0","private":true,"scripts":{"start":"node server.js"},"engines":{"node":">=18"}}
+{"name":"kaytox-dashboard","version":"1.0.0","private":true,"scripts":{"start":"node server.js"},"engines":{"node":">=20"},"dependencies":{"@neondatabase/serverless":"^1.2.1","@vercel/blob":"^2.9.0"},"overrides":{"zod":"^4.6.7"}}

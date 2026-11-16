@@ -1,10 +1,17 @@
 # KAYTOX DASHBOARD
-Backend Node (sans dépendance) + frontend statique + données dans `data/` (db.json + uploads).
+Backend Node sans framework + frontend statique. En local, les données sont dans `data/`; sur Vercel, Postgres et Blob sont utilisés.
 
 ## Lancer en local
-    node server.js      # http://localhost:3000  (code par défaut : KAYTOX)
+    node server.js      # Node 20+, http://localhost:3000  (code par défaut : KAYTOX)
 
-## Mettre en ligne (Render, Railway, Fly.io, VPS…)
+## Mettre en ligne sur Vercel
+1. Importe le dépôt dans Vercel et sélectionne comme répertoire racine celui qui contient `server.js` et `package.json`.
+2. Dans le Marketplace, connecte une base Postgres (par exemple Neon) et crée un Blob store **privé**.
+3. Vérifie que le projet reçoit `POSTGRES_URL` (ou `DATABASE_URL`) et que le Blob store est connecté au projet.
+4. Dans les variables d’environnement Vercel, définis `KAYTOX_CODE` et `SESSION_SECRET` (une longue valeur aléatoire), puis redéploie.
+5. Les images téléversées via Vercel sont limitées à 4 Mo. Le stockage privé est servi uniquement après connexion.
+
+## Mettre en ligne sur Render, Railway, Fly.io ou un VPS
 1. Dépose ce dossier dans un dépôt GitHub, crée un « Web Service » Node (commande : `node server.js`).
 2. Variables : `KAYTOX_CODE=KAYTOX` et `SESSION_SECRET=<texte aléatoire long>`.
 3. IMPORTANT : ajoute un disque persistant monté sur `/data` et mets `DATA_DIR=/data`, sinon tes données sont perdues à chaque redéploiement.
