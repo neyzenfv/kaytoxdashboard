@@ -1,0 +1,9 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KAYTOX</title><link rel="manifest" href="/manifest.json">
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0b0c10;color:#e8eaf0;font:16px -apple-system,Segoe UI,sans-serif}
+form{background:#14161d;border:1px solid #262a36;border-radius:16px;padding:32px;width:min(340px,90vw);text-align:center}
+h1{letter-spacing:.14em;margin:0 0 20px}b{color:#7c5cff}input,button{width:100%;padding:12px;border-radius:10px;border:1px solid #262a36;background:#1c1f29;color:#fff;font:inherit;margin-bottom:10px;box-sizing:border-box}
+button{background:#7c5cff;border-color:#7c5cff;cursor:pointer}#e{color:#f87171;min-height:20px}</style></head>
+<body><form id="f"><h1>KAY<b>TOX</b></h1><input id="c" type="password" placeholder="Code d’accès" autofocus autocomplete="current-password"><button>Entrer</button><div id="e"></div></form>
+<script>f.onsubmit=async e=>{e.preventDefault();const r=await fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({code:c.value})});
+if(r.ok)location.href="/";else e_.textContent=r.status==429?"Trop de tentatives, réessaie plus tard.":"Code incorrect."}
+const e_=document.getElementById("e");</script></body></html>
